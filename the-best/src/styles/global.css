@@ -66,12 +66,17 @@ body{
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 20px;
-    min-height: 670px;
+    height: 750px;
+
     
+}
+#cards{
+    display: flex;
+    flex-wrap: wrap;
 }
 .click-display{
     position: absolute;
-    height: 670px;
+    height: 750px;
     width: 400px;
     margin-top: -15px;
     border-radius: 15px;
@@ -85,13 +90,18 @@ body{
 }
 .popularity{
     display: flex;
-    position: absolute;
-    margin-left: 23.3%;
-    margin-top: 0.7%;
+    margin-left: 85%;
+    height: fit-content;
+    margin-top: 0.5%;
+
     color: white;
     font-size: 22px;
     font-family: "Lato", sans-serif;
     font-weight: 900;
+    border: 5px solid;
+    border-radius: 50%;
+    padding: 10px;
+    border-color: #038eb1;
 }
 
 .click-display:hover{
@@ -119,6 +129,7 @@ body{
     align-items: center;
     padding-top: 20px;
     display: none;
+
 }
 .overview-content{
     background-color: #969494;
@@ -147,6 +158,7 @@ body{
 }
 .icon-close{
     font-size: 38px;
+    cursor: pointer;
 }
 .overview-img{
     width: 45%;
@@ -166,7 +178,7 @@ body{
 }
 .year{
     color: #979393;
-    margin: 15px;
+    margin-top: auto;
 }
 /* .avaliation{
     color: white;
@@ -180,8 +192,3 @@ body{
     width: 200px;
     height: 100%;
 }
-.avaliation{
-    outline: 2px;
-    margin-top: -10px;
-    margin-left: 180px;
-}                                                     
