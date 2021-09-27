@@ -23,7 +23,7 @@ function Main(){
                 card.classList.add('card')
                 card.innerHTML = `            
                 <p class="click-display" onclick=openOverview(this) id=${index}>Sinopse</p>
-                <p class='popularity' id=${div.popularity}>${Math.floor(div.popularity)}</p>
+                <p class='popularity' id=${div.vote_average}>${div.vote_average}</p>
                 <h1 class='movie-title'>${div.title}</h1>
                 <img src=${`https://image.tmdb.org/t/p/w500${div.poster_path}`}    alt="Poster do Filme" class='poster' />
                 <h2 class='year'>${div.year}</h2>
@@ -41,22 +41,22 @@ function Main(){
       const response= await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&language=pt-br`)
       const data = await response.json()
       const {results} = data
-      const {backdrop_path, overview, popularity, poster_path, release_date, title} = results[0]
+      const {backdrop_path, overview, vote_average, poster_path, release_date, title} = results[0]
       const date = release_date.split('-')
       const year = date[0]
-      setResults({backdrop_path, overview, popularity, poster_path,year, title})
-      BuildCard({backdrop_path, overview, popularity, poster_path,year, title})
-      Keep({backdrop_path, overview, popularity, poster_path,year, title})  
+      setResults({backdrop_path, overview, vote_average, poster_path,year, title})
+      BuildCard({backdrop_path, overview, vote_average, poster_path,year, title})
+      Keep({backdrop_path, overview, vote_average, poster_path,year, title})  
       
     }
-    function BuildCard({backdrop_path, overview, popularity, poster_path,year, title}){
-        results = {backdrop_path, overview, popularity, poster_path,year, title}
+    function BuildCard({backdrop_path, overview, vote_average, poster_path,year, title}){
+        results = {backdrop_path, overview, vote_average, poster_path,year, title}
         
         const card = document.createElement('div')
         card.classList.add('card')
         card.innerHTML = `            
         <p class="click-display" onclick='openOverview(this)' id=${index}>Sinopse</p>
-        <p class='popularity' id=${results.popularity}>${Math.floor(results.popularity)}</p>
+        <p class='popularity' id=${results.vote_average}>${results.vote_average}</p>
         <h1 class='movie-title'>${results.title}</h1>
         <img src=${`https://image.tmdb.org/t/p/w500${results.poster_path}`}    alt="Poster do Filme" class='poster' />
         <h2 class='year'>${results.year}</h2>
@@ -65,8 +65,8 @@ function Main(){
         cards.appendChild(card)
         index ++
     }
-    function Keep({backdrop_path, overview, popularity, poster_path,year, title}){
-        infos = {title: title,  backdrop_path: backdrop_path, popularity: popularity, poster_path: poster_path,year: year, overview: overview}
+    function Keep({backdrop_path, overview, vote_average, poster_path,year, title}){
+        infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview}
         movieList.push(title)
         localStorage.setItem('movielist', movieList)
         localStorage.setItem(title, JSON.stringify(infos))
