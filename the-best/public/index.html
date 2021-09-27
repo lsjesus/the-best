@@ -10,6 +10,8 @@
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fad080428c.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>The Best</title>
   </head>
   <body>
@@ -18,16 +20,37 @@
     </div>
     <div id='cards'></div>
     <script>
-      function openOverview(){
-        const close = document.querySelector('.icon-close')
-        close.addEventListener('click', closeOverview)
-        console.log('opa')
-        console.log(close)
-  const container = document.querySelector('.container-overview')
-  container.style.display = 'flex'
-}
+       function openOverview(i){
+         
+         var container = document.querySelector('.container-overview')
+        
+        
+
+        var list = localStorage.getItem('movielist')  
+        movieList = list.split(',')
+        const items = localStorage.getItem(movieList[i.id])
+
+        var div = JSON.parse(items)
+        container.innerHTML = `            
+  <section class="container-overview2">
+    <div class="overview-content">
+        <div class="header-overview">
+            <h1 class='overview-title'>${div.title}</h1>
+            <i class="fas fa-times" onclick='closeOverview()'></i>
+        </div>
+        <div class="overview-display">
+            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} alt="Movie Logo" class='overview-img'/>
+            <p class="overview">${div.overview}</p>
+        </div>
+    </div>
+</section> 
+        `
+        container.style.display = 'flex'
+        
+        }
+
       function closeOverview(){
-        console.log('opa')
+
         const container = document.querySelector('.container-overview')
         container.style.display = 'none'
       }

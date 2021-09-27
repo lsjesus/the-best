@@ -156,8 +156,8 @@ body{
     justify-content: space-between;
 
 }
-.icon-close{
-    font-size: 38px;
+.fa-times{
+    font-size: 48px;
     cursor: pointer;
 }
 .overview-img{
@@ -179,6 +179,7 @@ body{
 .year{
     color: #979393;
     margin-top: auto;
+    font-size: 24px;
 }
 /* .avaliation{
     color: white;
