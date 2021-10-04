@@ -20,6 +20,18 @@
     </div>
     <div id='cards'></div>
     <script>
+      function remove(opa){
+        document.location.reload(true)
+        console.log(opa)
+        var list = localStorage.getItem('movielist')  
+        movieList = list.split(',')
+        const items = localStorage.getItem(movieList[opa.id])
+        var div = JSON.parse(items)
+        localStorage.removeItem(div.title)
+        movieList.splice(opa.id, 1)
+        localStorage.setItem('movielist', movieList)
+
+      }
        function openOverview(i){
          
          var container = document.querySelector('.container-overview')

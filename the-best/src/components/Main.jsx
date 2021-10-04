@@ -1,6 +1,7 @@
 import {MdLocalMovies} from 'react-icons/md'
 import {FaSearch} from 'react-icons/fa'
 import {MdClose} from 'react-icons/md'
+import {IoMdTrash} from 'react-icons/io'
 import { useEffect, useState } from "react"
 import GetMovie from './Main'
 const cards = document.querySelector('#cards')
@@ -22,7 +23,7 @@ function Main(){
                 const card = document.createElement('div')
                 card.classList.add('card')
                 card.innerHTML = `            
-                <p class="click-display" onclick=openOverview(this) id=${index}>Sinopse</p>
+                <p class="click-display" onclick=openOverview(this) id=${index}><i id=${index} class="fas fa-trash" onclick=remove(this)></i>Sinopse</p>
                 <p class='popularity' id=${div.vote_average}>${div.vote_average}</p>
                 <h1 class='movie-title'>${div.title}</h1>
                 <img src=${`https://image.tmdb.org/t/p/w500${div.poster_path}`}    alt="Poster do Filme" class='poster' />
@@ -55,7 +56,7 @@ function Main(){
         const card = document.createElement('div')
         card.classList.add('card')
         card.innerHTML = `            
-        <p class="click-display" onclick='openOverview(this)' id=${index}>Sinopse</p>
+        <p class="click-display" onclick='openOverview(this)' id=${index}><i id=${index} class="fas fa-trash" onclick=remove(this)></i>Sinopse</p>
         <p class='popularity' id=${results.vote_average}>${results.vote_average}</p>
         <h1 class='movie-title'>${results.title}</h1>
         <img src=${`https://image.tmdb.org/t/p/w500${results.poster_path}`}    alt="Poster do Filme" class='poster' />
@@ -76,12 +77,12 @@ function Main(){
     <div className="container">
         <header className='header'>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
-            <div className="search-container"><input type="text" className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
+            <div className="search-container"><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
             
-            }} /><FaSearch className='search-icon' onClick={()=>{
+            }} /><button type='submit' className='submit-btn' ><FaSearch className='search-icon' onClick={()=>{
                 GetMovie(movie)
                 
-                }} /><input type="submit" className='submit' /></div>
+                }}/></button></div>
         </header>
         <section className="container-overview">
             <div className="overview-content">

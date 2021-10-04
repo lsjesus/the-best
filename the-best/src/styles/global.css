@@ -54,6 +54,8 @@ body{
 .search-icon{
     margin-top: 3px;
     cursor: pointer;
+    font-size: 30px;
+    color: #666363;
 }
 .card{
     background-color: #040333;
@@ -87,6 +89,7 @@ body{
     color: transparent;
     cursor: pointer;
     transition: all .3s ease-in-out;
+    
 }
 .popularity{
     display: flex;
@@ -104,13 +107,13 @@ body{
     padding-top: 12px;
     border-color: #038eb1;
 }
-
 .click-display:hover{
     background: rgba(0, 0, 0, 0.6);
     color: #fefefe;
+    
 }
 .poster{
-    width: 300px;
+    width: 320px;
 }
 .submit{
     display: none;
@@ -142,7 +145,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 .overview{
     color: black;
@@ -193,4 +196,25 @@ body{
     display: flex;
     width: 200px;
     height: 100%;
+}
+.submit-btn{
+    background: none;
+    border: none;
+}
+.fa-trash{
+    position: absolute;
+    font-size: 30px;
+    margin-top: -670px;
+    margin-left: -495px;
+    color: transparent;
+    transition: all .3s ease-in-out;
+    
+    
+}
+.click-display:hover .fa-trash{
+    color: #666363;
+    transform: translateX(100px);
+}
+.click-display > .fa-trash:hover{
+    color: #6663637e;
 }
