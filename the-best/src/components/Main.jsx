@@ -77,6 +77,15 @@ function Main(){
     <div className="container">
         <header className='header'>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
+            <nav>
+                <ul>
+                    <li>Procure por um filme</li>
+                    <li>Melhores avaliações</li>
+                    <li>Drama</li>
+                    <li>Para a família toda</li>
+                    <li>Meus best movies</li>
+                </ul>
+            </nav>
             <div className="search-container"><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
             
             }} /><button type='submit' className='submit-btn' ><FaSearch className='search-icon' onClick={()=>{
