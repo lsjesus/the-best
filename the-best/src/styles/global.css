@@ -218,3 +218,34 @@ body{
 .click-display > .fa-trash:hover{
     color: #6663637e;
 }
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+.menu-item{
+    font-size: 23px;
+    
+}
+.navigation{
+    margin-top: 28px;
+}
+.link-menu{
+    text-decoration: none;
+    color: #d6c8c8;
+    transition: all .1s ease-in-out;
+}
+.link-menu:hover{
+    color: white;
+    font-weight: 900;
+}
+.back{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back-icon{
+    margin-top: 3.5px;
+}

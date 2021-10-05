@@ -4,6 +4,7 @@ import {MdClose} from 'react-icons/md'
 import {IoMdTrash} from 'react-icons/io'
 import { useEffect, useState } from "react"
 import GetMovie from './Main'
+import {Link} from 'react-router-dom'
 const cards = document.querySelector('#cards')
 var movieList = []
 var infos = []
@@ -38,7 +39,7 @@ function Main(){
             return
         }}
     async function GetMovie(movie){
-      const api_key = ''
+      const api_key = 'd18a4f16ec6506238fafbda0ee9d740d'
       const response= await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&language=pt-br`)
       const data = await response.json()
       const {results} = data
@@ -77,13 +78,23 @@ function Main(){
     <div className="container">
         <header className='header'>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
-            <nav>
-                <ul>
-                    <li>Procure por um filme</li>
-                    <li>Melhores avaliações</li>
-                    <li>Drama</li>
-                    <li>Para a família toda</li>
-                    <li>Meus best movies</li>
+            <nav className='navigation'>
+                <ul className='menu'>
+                    <Link to='/app' className='link-menu' refresh='true'>
+                        <li className='menu-item'>Melhores avaliações</li>
+                    </Link>
+                    <Link to='' className='link-menu'>
+                        <li className='menu-item'>Drama</li>
+                    </Link>
+                    <Link to='' className='link-menu'>
+                        <li className='menu-item'>Procure por um filme</li>
+                    </Link>
+                    <Link to='' className='link-menu'>
+                        <li className='menu-item'>Para a família toda</li>
+                    </Link>
+                    <Link to='' className='link-menu'>
+                        <li className='menu-item'>Meus best movies</li>
+                    </Link>
                 </ul>
             </nav>
             <div className="search-container"><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)

@@ -1,10 +1,9 @@
 import Main from './components/Main.jsx'
+import Routes from  './routes/index'
 function App() {
   return (
     <div className="App">
-      {Main()}
-      {/* {Main()} */}
-
+      <Routes/>
     </div>
   );
 }
