@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import {MdLocalMovies, MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md'
+import {BiArrowBack} from 'react-icons/bi'
 import {Link} from 'react-router-dom'
 var index = 0
 function Avaliations(){
     const cards = document.querySelector('#cards')
+    const [refresh, setRefresh] = useState('')
     cards.innerHTML = ''
     async function GetMovie(){
         const api_key = 'd18a4f16ec6506238fafbda0ee9d740d'
@@ -38,21 +40,22 @@ function Avaliations(){
         index ++
     }
     useEffect(()=>{GetMovie()}, [])
+    
     return(
         <header className='header' style={{marginBottom: 80}}>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
-            <Link>
-                <p className="back"> <MdKeyboardArrowLeft size={20} className='back-icon' />Voltar</p>
+            <Link to='/' onclick='document.location.reload(true)' >
+                <BiArrowBack size={50} className='back-icon' />
             </Link>
             <nav className='navigation'>
                 <ul className='menu'>
-                    <Link to='/app' className='link-menu' refresh='true'>
+                    <Link to='/app' className='link-menu' >
                         <li className='menu-item'>Melhores avaliações</li>
                     </Link>
                     <Link to='' className='link-menu'>
                         <li className='menu-item'>Drama</li>
                     </Link>
-                    <Link to='' className='link-menu'>
+                    <Link to='/' refresh='true' className='link-menu'>
                         <li className='menu-item'>Procure por um filme</li>
                     </Link>
                     <Link to='' className='link-menu'>
