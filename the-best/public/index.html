@@ -20,6 +20,7 @@
     </div>
     <div id="cards"></div>
     <script>
+      
       function remove(opa){
         document.location.reload(true)
         console.log(opa)
@@ -33,7 +34,7 @@
 
       }
        function openOverview(i){
-         
+         console.log(i)
          var container = document.querySelector('.container-overview')
         
         
@@ -60,13 +61,43 @@
         container.style.display = 'flex'
         
         }
+        function openOverview2(i){
+         console.log(i)
+         var container = document.querySelector('.container-overview')
+        
+        
+          
+        var list = localStorage.getItem('movielist-2')  
+        movieList = list.split(',')
+        const items = localStorage.getItem(movieList[i.id])
+
+        var div = JSON.parse(items)
+        container.innerHTML = `            
+  <section class="container-overview2">
+    <div class="overview-content">
+        <div class="header-overview">
+            <h1 class='overview-title'>${div.title}</h1>
+            <i class="fas fa-times" onclick='closeOverview()'></i>
+        </div>
+        <div class="overview-display">
+            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} onerror="this.src = 'http://www.freeiconspng.com/uploads/error-icon-28.png'" class='overview-img'/>
+            <p class="overview">${div.overview}</p>
+        </div>
+    </div>
+</section> 
+        `
+        container.style.display = 'flex'
+        
+        }
 
       function closeOverview(){
 
         const container = document.querySelector('.container-overview')
         container.style.display = 'none'
       }
-      
+      function refresh(){
+        alert('oi')
+      }
 
 
     </script>

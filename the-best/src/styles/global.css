@@ -167,6 +167,7 @@ body{
 .overview-img{
     width: 45%;
     margin: 20px;
+    max-height: 350px;
 }
 .overview-title{
     font-size: 42px;
