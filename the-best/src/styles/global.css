@@ -233,7 +233,7 @@ body{
     margin-top: 28px;
     border-bottom: groove 2px;
     padding-bottom: 30px;
-    width: 93%;
+    width: 89%;
     margin: 38px auto;
 }
 .link-menu{
@@ -260,7 +260,22 @@ body{
     padding: 5px;
 }
 .fa-star{
+    display: flex;
     font-size: 38px;
     margin-left: 10px;
-    color: #fecb00;
+    color: #a88701;
+    
+}
+.starlabel{
+    color: dimgrey;
+    font-size: 20px;
+    margin-top: 13px;
+    margin-left: -280px;
+    font-style: italic;
+    font-weight: 900;
+    transition: all .3s ease-in-out;
+}
+.fas:hover .starlabel{
+
+    transform: translateX(300px);
 }
