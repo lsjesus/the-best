@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import {MdLocalMovies, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdClose} from 'react-icons/md'
 import {BiArrowBack} from 'react-icons/bi'
 import {Link} from 'react-router-dom'
+import {AiOutlineStar, AiFillStar} from 'react-icons/ai'
 var index = 0
 var movieList = []
 var infos = []
@@ -17,7 +18,7 @@ function Avaliations(){
             for(var i = 0; i < movieList.length; i++){
                 const items = localStorage.getItem(movieList[i])
                 var div = JSON.parse(items)
-                console.log(i)
+               
                 const card = document.createElement('div')
                 card.classList.add('card')
                 card.innerHTML = `            
@@ -81,7 +82,7 @@ function Avaliations(){
     }}, [])
     console.log(movieList)
     function refreshPage(){ 
-        setTimeout(()=>{document.location.reload(true)}, 100); 
+        setTimeout(()=>{document.location.reload(true)}, 1); 
     }
     return(
         <div className='container'>
@@ -114,6 +115,7 @@ function Avaliations(){
             <section className="container-overview">
                     <div className="overview-content">
                         <div className="header-overview">
+                            
                             <h1 className='overview-title'></h1>
                             <MdClose className='icon-close' onclick='closeOverview()'/>
                         </div>

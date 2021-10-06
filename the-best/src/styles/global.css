@@ -259,3 +259,8 @@ body{
     border: 4px solid white;
     padding: 5px;
 }
+.fa-star{
+    font-size: 38px;
+    margin-left: 10px;
+    color: #fecb00;
+}

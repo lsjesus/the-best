@@ -20,7 +20,16 @@
     </div>
     <div id="cards"></div>
     <script>
-      
+      function trocarClasse(opa){
+        if(opa.classList.contains('fas') === true){
+          opa.classList.remove('fas')
+          opa.classList.add('far')
+          return
+
+        }
+        opa.classList.remove('far')
+        opa.classList.add('fas')
+      }
       function remove(opa){
         document.location.reload(true)
         console.log(opa)
@@ -52,7 +61,7 @@
             <i class="fas fa-times" onclick='closeOverview()'></i>
         </div>
         <div class="overview-display">
-            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} alt="Movie Logo" class='overview-img'/>
+            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} alt="Movie Logo" class='overview-img' onerror="this.src = 'https://i.ibb.co/q0s4s8t/error.jpg'"/>
             <p class="overview">${div.overview}</p>
         </div>
     </div>
@@ -62,7 +71,7 @@
         
         }
         function openOverview2(i){
-         console.log(i)
+         
          var container = document.querySelector('.container-overview')
         
         
@@ -76,11 +85,12 @@
   <section class="container-overview2">
     <div class="overview-content">
         <div class="header-overview">
+            <i class="far fa-star" onclick='trocarClasse(this)'></i>
             <h1 class='overview-title'>${div.title}</h1>
             <i class="fas fa-times" onclick='closeOverview()'></i>
         </div>
         <div class="overview-display">
-            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} onerror="this.src = 'http://www.freeiconspng.com/uploads/error-icon-28.png'" class='overview-img'/>
+            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} onerror="this.src = 'https://i.ibb.co/q0s4s8t/error.jpg'" class='overview-img'/>
             <p class="overview">${div.overview}</p>
         </div>
     </div>

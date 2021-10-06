@@ -73,14 +73,14 @@ function Main(){
         localStorage.setItem('movielist', movieList)
         localStorage.setItem(title, JSON.stringify(infos))
     }
-    
+
     return(
     <div className="container">
         <header className='header'>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
             <nav className='navigation'>
                 <ul className='menu'>
-                    <Link to='/app' className='link-menu' refresh='true'>
+                    <Link to='/app' className='link-menu'>
                         <li className='menu-item'>Melhores avaliações</li>
                     </Link>
                     <Link to='' className='link-menu'>
