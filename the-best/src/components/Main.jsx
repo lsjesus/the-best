@@ -39,6 +39,7 @@ function Main(){
             return
         }}
     async function GetMovie(movie){
+      
       const api_key = 'd18a4f16ec6506238fafbda0ee9d740d'
       const response= await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&language=pt-br`)
       const data = await response.json()
@@ -97,12 +98,15 @@ function Main(){
                     </Link>
                 </ul>
             </nav>
-            <div className="search-container"><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
-            
-            }} /><button type='submit' className='submit-btn' ><FaSearch className='search-icon' onClick={()=>{
+            <form className="search-container" onSubmit={(event)=>{
+                event.preventDefault()
                 GetMovie(movie)
                 
-                }}/></button></div>
+                }}><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
+            
+            }} /><input type='submit'  className='submit-btn' value=''/><FaSearch className='search-icon' onClick={()=>{
+                GetMovie(movie)
+                }}></FaSearch></form>
         </header>
         <section className="container-overview">
             <div className="overview-content">
