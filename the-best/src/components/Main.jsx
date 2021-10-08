@@ -101,7 +101,7 @@ function Main(){
                     <Link to='' className='link-menu'>
                         <li className='menu-item'>Para a família toda</li>
                     </Link>
-                    <Link to='' className='link-menu'>
+                    <Link to='/best' className='link-menu'>
                         <li className='menu-item'>Meus best movies</li>
                     </Link>
                 </ul>

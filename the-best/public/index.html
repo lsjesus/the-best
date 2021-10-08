@@ -24,11 +24,29 @@
         if(opa.classList.contains('fas') === true){
           opa.classList.remove('fas')
           opa.classList.add('far')
-          return
-
+          var favdiv = []
+        var favlist = localStorage.getItem('favlist')
+        if (favlist != null && favlist != ''){
+          var favdiv = favlist.split(',')
         }
-        opa.classList.remove('far')
+        favdiv.splice(opa.id, 1)
+        localStorage.setItem('favlist', favdiv)
+          return
+          // usar toggle na proxima vez seu burro
+        } else{
+          opa.classList.remove('far')
         opa.classList.add('fas')
+        var favdiv = []
+        var favlist = localStorage.getItem('favlist')
+        if (favlist != null && favlist != ''){
+          var favdiv = favlist.split(',')
+        }
+        favdiv.push(opa.id)
+        console.log(opa.id)
+        localStorage.setItem('favlist', favdiv)
+        }
+
+
       }
       function remove(opa){
         document.location.reload(true)
@@ -45,20 +63,63 @@
        function openOverview(i){
          console.log(i)
          var container = document.querySelector('.container-overview')
-        
-        
+         var star = 'far'
+         var favlist = localStorage.getItem('favlist')
 
         var list = localStorage.getItem('movielist')  
         movieList = list.split(',')
         const items = localStorage.getItem(movieList[i.id])
-
+        
         var div = JSON.parse(items)
+        if (favlist != null && favlist != ''){
+          if(favlist.includes(div.title) === true){
+            var star = 'fas'
+          }
+      }
+        console.log(div.title)
         container.innerHTML = `            
   <section class="container-overview2" >
     <div class="overview-content" style='background: url(${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`}) no-repeat; background-size: 100% auto; padding: 0; margin:0;'>
-        <div class="opacity-display" style='background-color: rgba(27, 23, 29, 0.88); background-size: inherit; height: 100%; padding: 30px; border-radius: 10px;'>
+        <div class="opacity-display" style='background-color: rgba(27, 23, 29, 0.9); background-size: inherit; height: 100%; padding: 30px; border-radius: 10px;'>
           <div class="header-overview">
-              <i class="far fa-star" onclick='trocarClasse(this)'><p class='starlabel'>The Best!</p></i>
+              <i class="${star} fa-star" onclick='trocarClasse(this)' id='${div.title}'><p class='starlabel'>The Best!</p></i>
+              <h1 class='overview-title'>${div.title}</h1>
+              <i class="fas fa-times" onclick='closeOverview()'></i>
+          </div>
+          <div class="overview-display">
+              <iframe class='video' width="500px" height="281px" src="https://www.youtube.com/embed/${div.key}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p class="overview">${div.overview}</p>
+          </div>
+        </div>
+    </div>
+</section> 
+        `
+        container.style.display = 'flex'
+        
+        }
+        function openOverview3(i){
+         console.log(i)
+         var container = document.querySelector('.container-overview')
+         var star = 'far'
+         var favlist = localStorage.getItem('favlist')
+
+        var list = localStorage.getItem('favlist')  
+        movieList = list.split(',')
+        const items = localStorage.getItem(movieList[i.id])
+        console.log(items)
+        var div = JSON.parse(items)
+        if (favlist != null && favlist != ''){
+          if(favlist.includes(div.title) === true){
+            var star = 'fas'
+          }
+      }
+        console.log(div.title)
+        container.innerHTML = `            
+  <section class="container-overview2" >
+    <div class="overview-content" style='background: url(${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`}) no-repeat; background-size: 100% auto; padding: 0; margin:0;'>
+        <div class="opacity-display" style='background-color: rgba(27, 23, 29, 0.9); background-size: inherit; height: 100%; padding: 30px; border-radius: 10px;'>
+          <div class="header-overview">
+              <i class="${star} fa-star" onclick='trocarClasse(this)' id='${div.title}'><p class='starlabel'>The Best!</p></i>
               <h1 class='overview-title'>${div.title}</h1>
               <i class="fas fa-times" onclick='closeOverview()'></i>
           </div>
@@ -106,7 +167,7 @@
         }
 
       function closeOverview(){
-
+        document.location.reload(true)
         const container = document.querySelector('.container-overview')
         container.style.display = 'none'
       }
