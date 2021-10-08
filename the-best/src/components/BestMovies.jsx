@@ -35,12 +35,15 @@ function BestMovies(){
         }
         else{
             return
-        }} 
+        }}
+        function refreshPage(){ 
+            setTimeout(()=>{document.location.reload(true)}, 1); 
+        } 
         return(
             <div className='container'>
                 <header className='header' style={{marginBottom: 80}}>
                     <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
-                    <Link  to='/'  >
+                    <Link  to='/'  onClick={refreshPage}>
                         <BiArrowBack size={50} className='back-icon' />
                     </Link>
                     
@@ -52,7 +55,7 @@ function BestMovies(){
                             <Link to='' className='link-menu'>
                                 <li className='menu-item'>Drama</li>
                             </Link>
-                            <Link to='/'  className='link-menu'>
+                            <Link to='/'  className='link-menu' onClick={refreshPage}>
                                 <li className='menu-item'>Procure por um filme</li>
                             </Link>
                             <Link to='' className='link-menu'>

@@ -29,7 +29,8 @@
         if (favlist != null && favlist != ''){
           var favdiv = favlist.split(',')
         }
-        favdiv.splice(opa.id, 1)
+        favdiv.splice(favdiv.indexOf(opa.id), 1)
+        console.log(favdiv)
         localStorage.setItem('favlist', favdiv)
           return
           // usar toggle na proxima vez seu burro
@@ -57,6 +58,14 @@
         var div = JSON.parse(items)
         localStorage.removeItem(div.title)
         movieList.splice(opa.id, 1)
+        var favlist = localStorage.getItem('favlist')
+        if (favlist!=null && favlist!=''){
+          var favdiv = favlist.split(',')
+          if (favdiv.includes(div.title) === true){
+            favdiv.splice(favdiv.indexOf(div.title), 1)
+            localStorage.setItem('favlist', favdiv)
+          }
+        }
         localStorage.setItem('movielist', movieList)
 
       }

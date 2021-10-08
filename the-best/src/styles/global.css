@@ -297,3 +297,6 @@ body{
 
     transform: translateX(300px);
 }
+.video{
+    width: 680px;
+}
