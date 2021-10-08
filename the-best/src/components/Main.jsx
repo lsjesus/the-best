@@ -43,13 +43,19 @@ function Main(){
       const api_key = 'd18a4f16ec6506238fafbda0ee9d740d'
       const response= await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&language=pt-br`)
       const data = await response.json()
-      const {results} = data
-      const {backdrop_path, overview, vote_average, poster_path, release_date, title} = results[0]
+      var {results} = data
+      const {backdrop_path, overview, vote_average, poster_path, release_date, title, id} = results[0]
+      console.log(id)
       const date = release_date.split('-')
       const year = date[0]
-      setResults({backdrop_path, overview, vote_average, poster_path,year, title})
+      const video_response = await fetch (`
+      https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}&language=en-US`)
+      const video_data = await video_response.json()
+      var {results} = video_data
+      const {key} = results[0]
+      setResults({backdrop_path, overview, vote_average, poster_path,year, title, id})
       BuildCard({backdrop_path, overview, vote_average, poster_path,year, title})
-      Keep({backdrop_path, overview, vote_average, poster_path,year, title})  
+      Keep({backdrop_path, overview, vote_average, poster_path,year, title, key})  
       
     }
     function BuildCard({backdrop_path, overview, vote_average, poster_path,year, title}){
@@ -68,20 +74,22 @@ function Main(){
         cards.appendChild(card)
         index ++
     }
-    function Keep({backdrop_path, overview, vote_average, poster_path,year, title}){
-        infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview}
+    function Keep({backdrop_path, overview, vote_average, poster_path,year, title, key}){
+        infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview, key:key}
         movieList.push(title)
         localStorage.setItem('movielist', movieList)
         localStorage.setItem(title, JSON.stringify(infos))
     }
-
+    function refreshPage(){ 
+        setTimeout(()=>{document.location.reload(true)}, 500); 
+    }
     return(
     <div className="container">
         <header className='header'>
             <h1 className='principal-title'>The Best<MdLocalMovies className='movie-icon'/></h1>
             <nav className='navigation'>
                 <ul className='menu'>
-                    <Link to='/app' className='link-menu'>
+                    <Link to='/app' className='link-menu' onClick={refreshPage}>
                         <li className='menu-item'>Melhores avaliações</li>
                     </Link>
                     <Link to='' className='link-menu'>

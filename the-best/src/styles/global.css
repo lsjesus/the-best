@@ -154,9 +154,17 @@ body{
 .overview{
     color: white;
     font-weight: 400;
-    font-size: 22px;
+    width: auto;
     line-height: 32px;
-    margin: 40px;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    margin: 30px 0;
+
+
 }
 .header-overview{
     display: flex;
@@ -167,6 +175,7 @@ body{
 .fa-times{
     font-size: 48px;
     cursor: pointer;
+    color: grey;
 }
 .overview-img{
     width: 45%;

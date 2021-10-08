@@ -41,12 +41,25 @@ function Avaliations(){
         const data = await response.json()
         const {results} = data
         console.log(results)
+
         for(var i= 0;i<results.length;i++){
-            var {backdrop_path, overview, vote_average, poster_path, release_date, title} = results[i]
+            console.log(results)
+            var {backdrop_path, overview, vote_average, poster_path, release_date, title, id} = results[i]
+            const video_response = await fetch (`
+            https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}&language=en-US`)
+            const video_data = await video_response.json()
+            var newresults = video_data.results[0]
+            if (newresults === undefined){
+                var key = ''
+                
+            } else{
+                var {key} = newresults
+            }
+            
             if (title === '"And So, It Goes"'){
                 continue
             }
-            Keep({backdrop_path, overview, vote_average, poster_path, title})
+            Keep({backdrop_path, overview, vote_average, poster_path, title, key})
             getSheet()
         }
         // const {backdrop_path, overview, vote_average, poster_path, release_date, title} = results[0]
@@ -71,8 +84,8 @@ function Avaliations(){
         cards.appendChild(card)
         index ++
     }
-    function Keep({backdrop_path, overview, vote_average, poster_path,year, title}){
-        infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview}
+    function Keep({backdrop_path, overview, vote_average, poster_path,year, title, key}){
+        infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview, key:key}
         movieList.push(title)
         localStorage.setItem('movielist-2', movieList)
         localStorage.setItem(title, JSON.stringify(infos))
