@@ -54,15 +54,17 @@
 
         var div = JSON.parse(items)
         container.innerHTML = `            
-  <section class="container-overview2">
-    <div class="overview-content">
-        <div class="header-overview">
-            <h1 class='overview-title'>${div.title}</h1>
-            <i class="fas fa-times" onclick='closeOverview()'></i>
-        </div>
-        <div class="overview-display">
-            <img src=${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`} alt="Movie Logo" class='overview-img' onerror="this.src = 'https://i.ibb.co/q0s4s8t/error.jpg'"/>
-            <p class="overview">${div.overview}</p>
+  <section class="container-overview2" >
+    <div class="overview-content" style='background: url(${`https://image.tmdb.org/t/p/w500${div.backdrop_path}`}) no-repeat; background-size: 100% auto; padding: 0; margin:0;'>
+        <div class="opacity-display" style='background-color: rgba(27, 23, 29, 0.92); background-size: inherit; height: 100%; padding: 40px;'>
+          <div class="header-overview">
+              <h1 class='overview-title'>${div.title}</h1>
+              <i class="fas fa-times" onclick='closeOverview()'></i>
+          </div>
+          <div class="overview-display">
+              <iframe class='video' width="500px" height="281px" src="https://www.youtube.com/embed/G1ahaiEni3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p class="overview">${div.overview}</p>
+          </div>
         </div>
     </div>
 </section> 

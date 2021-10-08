@@ -134,25 +134,29 @@ body{
     padding-top: 20px;
     display: none;
 
+
 }
 .overview-content{
     background-color: #969494;
     margin: 60px;
     padding: 40px;
     border-radius: 10px;
+    width: 1200px;
+    height: 590px;
 }
 .overview-display{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 45px;
+    flex-direction: column;
 }
 .overview{
-    color: black;
+    color: white;
     font-weight: 400;
     font-size: 22px;
     line-height: 32px;
-    margin-left: 10px;
+    margin: 40px;
 }
 .header-overview{
     display: flex;
@@ -173,6 +177,9 @@ body{
     font-size: 42px;
     margin: auto;
     font-weight: 900;
+    color: white;
+    
+
 }
 .movie-title{
     color: #fefefe;
