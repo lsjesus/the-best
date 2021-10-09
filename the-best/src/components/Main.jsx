@@ -57,6 +57,7 @@ function Main(){
       BuildCard({backdrop_path, overview, vote_average, poster_path,year, title})
       Keep({backdrop_path, overview, vote_average, poster_path,year, title, key})  
       
+    //   document.body.animate(setTimeout(window.scrollTo(0, document.body.scrollHeight), 1000), 500)
     }
     function BuildCard({backdrop_path, overview, vote_average, poster_path,year, title}){
         results = {backdrop_path, overview, vote_average, poster_path,year, title}
@@ -81,7 +82,7 @@ function Main(){
         localStorage.setItem(title, JSON.stringify(infos))
     }
     function refreshPage(){ 
-        setTimeout(()=>{document.location.reload(true)}, 500); 
+        setTimeout(()=>{document.location.reload(true)}, 1000); 
     }
     return(
     <div className="container">
@@ -95,13 +96,13 @@ function Main(){
                     <Link to='' className='link-menu'>
                         <li className='menu-item'>Drama</li>
                     </Link>
-                    <Link to='' className='link-menu'>
+                    <Link to='/' className='link-menu' onClick={refreshPage}>
                         <li className='menu-item'>Procure por um filme</li>
                     </Link>
-                    <Link to='' className='link-menu'>
+                    <Link to='/family' className='link-menu' onClick={refreshPage}>
                         <li className='menu-item'>Para a família toda</li>
                     </Link>
-                    <Link to='/best' className='link-menu'>
+                    <Link to='/best' className='link-menu' onClick={refreshPage}>
                         <li className='menu-item'>Meus best movies</li>
                     </Link>
                 </ul>
@@ -109,7 +110,6 @@ function Main(){
             <form className="search-container" onSubmit={(event)=>{
                 event.preventDefault()
                 GetMovie(movie)
-                
                 }}><input type="text" placeholder='Digite aqui um filme legal' className='search-input' onKeyUp={(event)=>{setMovie(event.target.value)
             
             }} /><input type='submit'  className='submit-btn' value=''/><FaSearch className='search-icon' onClick={()=>{

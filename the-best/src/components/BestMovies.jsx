@@ -49,7 +49,7 @@ function BestMovies(){
                     
                     <nav className='navigation'>
                         <ul className='menu'>
-                            <Link to='/app' className='link-menu' >
+                            <Link to='/app' className='link-menu' onClick={refreshPage} >
                                 <li className='menu-item'>Melhores avaliações</li>
                             </Link>
                             <Link to='' className='link-menu'>
@@ -58,10 +58,10 @@ function BestMovies(){
                             <Link to='/'  className='link-menu' onClick={refreshPage}>
                                 <li className='menu-item'>Procure por um filme</li>
                             </Link>
-                            <Link to='' className='link-menu'>
+                            <Link to='/family' className='link-menu' onClick={refreshPage}>
                                 <li className='menu-item'>Para a família toda</li>
                             </Link>
-                            <Link to='' className='link-menu'>
+                            <Link to='/best' className='link-menu'>
                                 <li className='menu-item'>Meus best movies</li>
                             </Link>
                         </ul>

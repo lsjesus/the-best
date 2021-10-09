@@ -6,13 +6,13 @@ import {AiOutlineStar, AiFillStar} from 'react-icons/ai'
 var index = 0
 var movieList = []
 var infos = []
-function Avaliations(){
+function Family(){
     const cards = document.querySelector('#cards')
     const [refresh, setRefresh] = useState('')
     cards.innerHTML = ''
     useEffect(()=>{getSheet()}, [])
     function getSheet(){
-        var list = localStorage.getItem('movielist-2')  
+        var list = localStorage.getItem('familymovies')  
         if (list!=null && list!=''){
             movieList = list.split(',')
             for(var i = 0; i < movieList.length; i++){
@@ -22,11 +22,11 @@ function Avaliations(){
                 const card = document.createElement('div')
                 card.classList.add('card')
                 card.innerHTML = `            
-                <p class="click-display" onclick=openOverview2(this) id=${index}>Sinopse</p>
+                <p class="click-display" onclick=openOverview4(this) id=${index}>Sinopse</p>
                 <p class='popularity' id=${div.vote_average}>${div.vote_average}</p>
                 <h1 class='movie-title'>${div.title}</h1>
                 <img src=${`https://image.tmdb.org/t/p/w500${div.poster_path}`}    alt="Poster do Filme" class='poster' />
-                
+                <h2 class='year'>${div.year}</h2>
                 `
                 cards.appendChild(card)
                 index ++
@@ -37,7 +37,7 @@ function Avaliations(){
         }}
     async function GetMovie(){
         const api_key = 'd18a4f16ec6506238fafbda0ee9d740d'
-        const response= await fetch(`http://api.themoviedb.org/3/discover/movie?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${api_key}`)
+        const response= await fetch(`https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${api_key}&language=pt-br`)
         const data = await response.json()
         const {results} = data
         console.log(results)
@@ -45,6 +45,8 @@ function Avaliations(){
         for(var i= 0;i<results.length;i++){
             console.log(results)
             var {backdrop_path, overview, vote_average, poster_path, release_date, title, id} = results[i]
+            const date = release_date.split('-')
+            const year = date[0]
             const video_response = await fetch (`
             https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}&language=en-US`)
             const video_data = await video_response.json()
@@ -59,7 +61,7 @@ function Avaliations(){
             if (title === '"And So, It Goes"'){
                 continue
             }
-            Keep({backdrop_path, overview, vote_average, poster_path, title, key})
+            Keep({backdrop_path, overview, vote_average, poster_path, title, key, year})
             getSheet()
         }
         // const {backdrop_path, overview, vote_average, poster_path, release_date, title} = results[0]
@@ -69,7 +71,7 @@ function Avaliations(){
         // BuildCard({backdrop_path, overview, vote_average, poster_path,year, title})
     }
     function BuildCard({backdrop_path, overview, vote_average, poster_path,year, title}){
-        var results = {backdrop_path, overview, vote_average, poster_path, title}
+        var results = {backdrop_path, overview, vote_average, poster_path, title, year}
         
         const card = document.createElement('div')
         card.classList.add('card')
@@ -78,7 +80,7 @@ function Avaliations(){
         <p class='popularity' id=${results.vote_average}>${results.vote_average}</p>
         <h1 class='movie-title'>${results.title}</h1>
         <img src=${`https://image.tmdb.org/t/p/w500${results.poster_path}`}    alt="Poster do Filme" class='poster' />
-       
+        <h2 class='year'>${results.year}</h2>
         
         `
         cards.appendChild(card)
@@ -87,7 +89,7 @@ function Avaliations(){
     function Keep({backdrop_path, overview, vote_average, poster_path,year, title, key}){
         infos = {title: title,  backdrop_path: backdrop_path, vote_average: vote_average, poster_path: poster_path,year: year, overview: overview, key:key}
         movieList.push(title)
-        localStorage.setItem('movielist-2', movieList)
+        localStorage.setItem('familymovies', movieList)
         localStorage.setItem(title, JSON.stringify(infos))
     }
     useEffect(()=>{if (movieList.length === 0){
@@ -108,7 +110,7 @@ function Avaliations(){
                 
                 <nav className='navigation'>
                     <ul className='menu'>
-                        <Link to='/app' className='link-menu' >
+                        <Link to='/app' className='link-menu'  onClick={refreshPage}>
                             <li className='menu-item'>Melhores avaliações</li>
                         </Link>
                         <Link to='' className='link-menu'>
@@ -117,10 +119,10 @@ function Avaliations(){
                         <Link to='/' onClick={ refreshPage } className='link-menu'>
                             <li className='menu-item'>Procure por um filme</li>
                         </Link>
-                        <Link to='/family' className='link-menu' onClick={refreshPage}>
+                        <Link to='/family' className='link-menu'>
                             <li className='menu-item'>Para a família toda</li>
                         </Link>
-                        <Link to='/best' className='link-menu ' onClick={refreshPage}>
+                        <Link to='/best' className='link-menu' onClick={refreshPage}>
                             <li className='menu-item'>Meus best movies</li>
                         </Link>
                     </ul>
@@ -143,4 +145,4 @@ function Avaliations(){
 
     )
 }
-export default Avaliations
+export default Family

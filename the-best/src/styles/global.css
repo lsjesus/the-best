@@ -163,6 +163,7 @@ body{
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     margin: 30px 0;
+    text-indent: 25px;
 
 
 }
@@ -287,7 +288,7 @@ body{
     color: dimgrey;
     font-size: 20px;
     margin-top: 13px;
-    margin-left: -280px;
+    margin-left: -680px;
     font-style: italic;
     font-weight: 900;
     transition: all .3s ease-in-out;
@@ -295,7 +296,7 @@ body{
 }
 .fas:hover .starlabel{
 
-    transform: translateX(300px);
+    transform: translateX(700px);
 }
 .video{
     width: 680px;
