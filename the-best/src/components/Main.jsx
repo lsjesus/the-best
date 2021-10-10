@@ -127,7 +127,8 @@ function Main(){
                     <p className="overview">{results.overview}</p>
                 </div>
             </div>
-        </section> 
+        </section>
+
     </div>
     )
 }

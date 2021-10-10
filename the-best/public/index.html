@@ -16,9 +16,26 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
+    <div class="main">
+      <div id="root">
+      </div>
+      <div id="cards">
+      </div>
+      <footer class="footer">
+        <label for="me" class="label-footer">Developed by</label>
+        <div class="developer">
+          <img src="https://i.ibb.co/mzscgzh/me.jpg" alt="Lucas Jesus" class="me-picture">
+          <h2 class="me">Lucas Jesus</h2>
+        </div>
+        <ul class="networking">
+          <li class="socialicon instagram"><a href="https://www.instagram.com/lucas_sjesus/" target="_blank" class="link-social"><i class="fab fa-instagram"></i></a></li>
+          <li class="socialicon"><a href="https://github.com/lsjesus" target="_blank" class="link-social"><i class="fab fa-github"></i></a></li>
+          <li class="socialicon"><a href="https://www.linkedin.com/in/lucas-silva-de-jesus-9576481b7/" target="_blank" class="link-social"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+        <p class="rights">Copyright &copy; 2020. All Rights Reserved.</p>
+      
+      </footer>
     </div>
-    <div id="cards"></div>
     <script>
       function trocarClasse(opa){
         if(opa.classList.contains('fas') === true){

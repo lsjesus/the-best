@@ -1,8 +1,9 @@
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Lato", sans-serif;
+    
 }
 :root{
     --purple1: #2B0333;
@@ -11,6 +12,9 @@
 }
 body{
     background-image: linear-gradient(to left, #2B0333, #59024B);
+    font-family: "Lato", sans-serif;
+    
+    
 }
 .principal-title{
     font-family: "Lato", sans-serif;
@@ -300,4 +304,67 @@ body{
 }
 .video{
     width: 680px;
+}
+.footer{
+    padding-bottom: 45px;
+    background-color: #2c0031;
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.label-footer{
+    font-size: 15px;
+    margin-top: 20px;
+    color: #6b6969;
+    font-weight: 700;
+}
+.me{
+    color: whitesmoke;
+    
+    
+}
+.networking{
+    display: flex;
+    font-size: 35px;
+    color: silver;
+}
+.socialicon{
+    margin: 10px 20px;
+    padding: 20px;
+}
+.instagram{
+    list-style: none;
+}
+.me-picture{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.developer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+
+}
+.link-social{
+    color: silver;
+}
+.fab:hover{
+    font-size: 40px;
+}
+.main{
+    min-height: 1300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.rights{
+    font-size: 15px;
+    color: #6b6969;
+    font-weight: 700;
 }
